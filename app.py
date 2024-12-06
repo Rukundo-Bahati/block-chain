@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 from blockchain import Blockchain, Block
 import time
+import os
 
 app = Flask(__name__)
 blockchain = Blockchain()
@@ -24,5 +25,8 @@ def get_chain():
     chain_data = [block.__dict__ for block in blockchain.chain]
     return render_template('blockchain.html', chain=chain_data)
 
+port = int(os.environ.get("PORT", 5000))
+
 if __name__ == '__main__':
-    app.run(debug=True)
+    # app.run(debug=True)
+     app.run(host="0.0.0.0", port=port)
