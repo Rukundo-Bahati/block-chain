@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain App</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Blockchain Application</h1>
+    </header>
+    <main>
+        {% if message %}
+        <div class="alert">
+            <p>{{ message }}</p>
+        </div>
+        {% endif %}
+        <section class="action">
+            <h2>Mine a New Block</h2>
+            <form action="/mine_block" method="POST">
+                <label for="data">Enter Data for the Block:</label>
+                <textarea id="data" name="data" rows="4" required></textarea>
+                <button type="submit" class="mine-btn">Mine Block</button>
+            </form>
+        </section>
+        <section>
+            <h2>Blockchain Viewer</h2>
+            <a href="/get_chain" class="view-btn">View Blockchain</a>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Blockchain App</p>
+    </footer>
+</body>
+</html>
